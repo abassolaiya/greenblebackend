@@ -20,7 +20,7 @@ app.use(
     origin: [
       "http://127.0.0.1:3000",
       "http://localhost:3000",
-      "https://farmyfronttest.onrender.com",
+      "https://greenbletest.onrender.com/",
     ],
     // origin:'http://127.0.0.1:3000'
   })
