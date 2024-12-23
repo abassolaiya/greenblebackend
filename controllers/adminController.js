@@ -1,6 +1,22 @@
 const InputRates = require("../models/InputRates");
 const Blog = require("../models/Blog");
 
+const Estimate = require("../models/Estimate");
+const User = require("../models/User");
+
+exports.getEstimates = async (req, res) => {
+  try {
+    const estimates = await Estimate.find()
+      .populate("user", "name email") // Include user's name and email
+      .sort({ createdAt: -1 }); // Sort by most recent first
+
+    res.status(200).json(estimates);
+  } catch (error) {
+    console.error("Error fetching estimates:", error);
+    res.status(500).json({ message: "Error fetching estimates" });
+  }
+};
+
 // Create Input Rates
 exports.createInputRate = async (req, res) => {
   const { service, rate, city } = req.body;
